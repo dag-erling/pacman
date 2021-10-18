@@ -8,6 +8,7 @@
 
 namespace pacman {
 
+bool isWall(GridPosition point);
 bool isWalkableForPacMan(GridPosition point);
 bool isWalkableForGhost(GridPosition target_position, GridPosition current_position, bool isEyes);
 bool isInPen(GridPosition point);
