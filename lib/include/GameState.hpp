@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Blinky.hpp"
+#include "Dave.hpp"
 #include "Fruits.hpp"
 #include "Ghost.hpp"
 #include "Inky.hpp"
