@@ -4,6 +4,7 @@
 #include "Dave.hpp"
 #include "Fruits.hpp"
 #include "Ghost.hpp"
+#include "GhostState.hpp"
 #include "Inky.hpp"
 #include "InputState.hpp"
 #include "PacMan.hpp"
@@ -18,10 +19,7 @@ namespace pacman {
 struct GameState {
   void step(std::chrono::milliseconds delta);
 
-  Blinky blinky;
-  Pinky pinky;
-  Inky inky;
-  Dave dave;
+  GhostState ghosts;
 
   PacMan pacMan;
   PacManAI pacManAI;

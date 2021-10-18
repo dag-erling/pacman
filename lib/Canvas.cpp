@@ -36,10 +36,10 @@ void Canvas::render(const GameState & gameState) {
   renderPellets(gameState.pellets);
   renderSuperPellets(gameState.superPellets);
 
-  renderGhost(gameState.blinky);
-  renderGhost(gameState.pinky);
-  renderGhost(gameState.inky);
-  renderGhost(gameState.dave);
+  renderGhost(gameState.ghosts.blinky);
+  renderGhost(gameState.ghosts.pinky);
+  renderGhost(gameState.ghosts.inky);
+  renderGhost(gameState.ghosts.dave);
 
   renderScore(gameState.score.points);
   renderLives(gameState.score.lives);

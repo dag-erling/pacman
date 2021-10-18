@@ -18,21 +18,11 @@ void GameState::step(std::chrono::milliseconds delta) {
   if (!pacMan.hasDirection())
     return;
 
-  blinky.setTarget(pacMan.position());
-  blinky.update(delta);
-  pinky.setTarget(pacMan.positionInGrid(), pacMan.currentDirection());
-  pinky.update(delta);
-  inky.setTarget(pacMan.positionInGrid(), pacMan.currentDirection(), blinky.positionInGrid());
-  inky.update(delta);
-  dave.setTarget(pacMan.position());
-  dave.update(delta);
+  ghosts.setTarget(pacMan.positionInGrid(), pacMan.currentDirection());
+  ghosts.update(delta);
 
   fruit.update(delta, score.eatenPellets);
-
-  checkCollision(blinky);
-  checkCollision(pinky);
-  checkCollision(inky);
-  checkCollision(dave);
+  ghosts.checkCollision(*this);
 
   eatPellets();
   eatFruit();
@@ -58,10 +48,7 @@ void GameState::handleDeathAnimation(std::chrono::milliseconds delta) {
   timeSinceDeath += delta;
 
   if (timeSinceDeath.count() > 1000) {
-    blinky.reset();
-    pinky.reset();
-    inky.reset();
-    dave.reset();
+    ghosts.reset();
     pacMan.reset();
     pacManAI.reset();
     timeSinceDeath = std::chrono::milliseconds(0);
@@ -78,11 +65,7 @@ void GameState::eatPellets() {
   if (superPellets.eatPelletAtPosition(pos)) {
     score.eatenPellets++;
     score.points += POWER_PELLET_POINTS;
-
-    blinky.frighten();
-    pinky.frighten();
-    inky.frighten();
-    dave.frighten();
+    ghosts.frighten();
   }
 }
 
