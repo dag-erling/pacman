@@ -21,6 +21,7 @@ struct GameState {
   Blinky blinky;
   Pinky pinky;
   Inky inky;
+  Dave dave;
 
   PacMan pacMan;
   PacManAI pacManAI;

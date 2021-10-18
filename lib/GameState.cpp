@@ -24,12 +24,15 @@ void GameState::step(std::chrono::milliseconds delta) {
   pinky.update(delta);
   inky.setTarget(pacMan.positionInGrid(), pacMan.currentDirection(), blinky.positionInGrid());
   inky.update(delta);
+  dave.setTarget(pacMan.position());
+  dave.update(delta);
 
   fruit.update(delta, score.eatenPellets);
 
   checkCollision(blinky);
   checkCollision(pinky);
   checkCollision(inky);
+  checkCollision(dave);
 
   eatPellets();
   eatFruit();
@@ -58,6 +61,7 @@ void GameState::handleDeathAnimation(std::chrono::milliseconds delta) {
     blinky.reset();
     pinky.reset();
     inky.reset();
+    dave.reset();
     pacMan.reset();
     pacManAI.reset();
     timeSinceDeath = std::chrono::milliseconds(0);
@@ -78,6 +82,7 @@ void GameState::eatPellets() {
     blinky.frighten();
     pinky.frighten();
     inky.frighten();
+    dave.frighten();
   }
 }
 
