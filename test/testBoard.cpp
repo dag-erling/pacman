@@ -66,3 +66,14 @@ TEST_CASE("Teleport", "[board]") {
     REQUIRE(result.x == portalRight.x);
   }
 }
+
+TEST_CASE("Is wall", "[board]") {
+  REQUIRE(pacman::isWall(pacman::GridPosition{ 0, 0 }));
+  REQUIRE(pacman::isWall(pacman::GridPosition{ 27, 30 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 1, 1 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 26, 29 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 0, 14 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 27, 14 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 11, 13 }));
+  REQUIRE(!pacman::isWall(pacman::GridPosition{ 16, 15 }));
+}
