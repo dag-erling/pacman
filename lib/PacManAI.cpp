@@ -27,8 +27,8 @@ GridPosition PacManAI::pelletClosestToPacman(GridPosition position,
 
 // This function is not yet implemented.
 // You will implement it as part of module 25.
-bool PacManAI::isValidMove(const Move &) {
-    return false;
+bool PacManAI::isValidMove(const Move & move) {
+  return isWalkableForPacMan(move.position) && move.direction != oppositeDirection(direction);
 }
 
 // This function is not yet implemented.
