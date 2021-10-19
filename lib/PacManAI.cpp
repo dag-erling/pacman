@@ -16,10 +16,13 @@ Direction PacManAI::suggestedDirection() const {
 
 // This function is not yet implemented.
 // You will implement it as part of module 25.
-GridPosition PacManAI::pelletClosestToPacman(GridPosition,
-                                             std::vector<GridPosition> &) {
-
-    return {0, 0};
+GridPosition PacManAI::pelletClosestToPacman(GridPosition position,
+                                             std::vector<GridPosition> & pellets) {
+  if (pellets.empty())
+    return { 0, 0 };
+  return *std::min_element(pellets.begin(), pellets.end(), [position](GridPosition a, GridPosition b) {
+    return positionDistance(a, position) < positionDistance(b, position);
+  });
 }
 
 // This function is not yet implemented.

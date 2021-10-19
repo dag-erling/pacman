@@ -7,6 +7,7 @@ TEST_CASE("Find pellet closest to PacMan", "[AI]") {
     PacManAI AI;
     using TestData = std::tuple<GridPosition, std::vector<GridPosition>, GridPosition>;
     auto data = GENERATE(
+                TestData{{5, 5}, {}, {0, 0}},
                 TestData{{5, 5}, {{5, 6}}, {5, 6}},
                 TestData{{5, 5}, {{5, 5}}, {5, 5}},
                 TestData{{5, 5}, {{0, 0}, {5, 6}}, {5, 6}},
