@@ -33,8 +33,11 @@ bool PacManAI::isValidMove(const Move & move) {
 
 // This function is not yet implemented.
 // You will implement it as part of module 25.
-Direction PacManAI::optimalDirection(const std::array<Move, 4> &) {
-  return Direction::NONE;
+Direction PacManAI::optimalDirection(const std::array<Move, 4> & moves) {
+  auto bestMove = std::min_element(moves.begin(), moves.end(), [](Move a, Move b) {
+    return a.distanceToTarget < b.distanceToTarget;
+  });
+  return bestMove->direction;
 }
 
 void PacManAI::update(const PacMan & pacMan, const Pellets & pellets) {
